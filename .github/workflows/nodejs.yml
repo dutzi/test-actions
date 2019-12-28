@@ -1,4 +1,4 @@
-name: Node CI
+name: Code Quality
 
 on: [push]
 
@@ -22,19 +22,19 @@ jobs:
           npm run betterer
         env:
           CI: true
-      - name: blah
+      - name: Get Committer Name
         if: failure()
         run: |
-          echo "##[set-output name=version;]$(git show -s --format='%ae' 3a48812952ebee5a2e5de29df2c0896677649967)"
-        id: build_package
+          echo "##[set-output name=username;]$(git show -s --format='%ae' 3a48812952ebee5a2e5de29df2c0896677649967)"
+        id: get_committer_name
       - name: Slack Notification
         if: failure()
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_CHANNEL: general
-          SLACK_COLOR: "#3278BD"
+          SLACK_COLOR: "#F44336"
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: "${{steps.build_package.outputs.version}}, that fanny beep, introducing crap into the conversation. :rocket:"
+          SLACK_MESSAGE: "${{steps.get_committer_name.outputs.username}}, that fanny beep, introducing crap into the conversation. :rocket:"
           SLACK_TITLE: Post Title
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
