@@ -40,7 +40,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_COLOR: "#F44336"
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: "Congratulate *${{steps.get_committer_name.outputs.username}}*, that ${{steps.get_fart_name.outputs.fartname}}, for introducing crap into the conversation. :rocket:"
+          SLACK_MESSAGE: "Congratulate *${{steps.get_committer_name.outputs.username}}*, that _${{steps.get_fart_name.outputs.fartname}}_, for introducing crap into the conversation. :rocket:"
           SLACK_TITLE: Woo-Hoo.
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
