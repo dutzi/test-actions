@@ -25,7 +25,7 @@ jobs:
       - name: Get Committer Name
         if: failure()
         run: |
-          echo "##[set-output name=username;]$(git show -s --format='%ae' 3a48812952ebee5a2e5de29df2c0896677649967)"
+          echo "##[set-output name=username;]$(git show -s --format='%ae' ${{GITHUB_SHA}})"
         id: get_committer_name
       - name: Get Fart Name
         if: failure()
@@ -41,6 +41,6 @@ jobs:
           SLACK_COLOR: "#F44336"
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_MESSAGE: "Congratulate ${{steps.get_committer_name.outputs.username}}, that ${{steps.get_fart_name.outputs.fartname}}, for introducing crap into the conversation. :rocket:"
-          SLACK_TITLE: Post Title
+          SLACK_TITLE: Woo-Hoo.
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
