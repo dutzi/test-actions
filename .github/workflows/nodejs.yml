@@ -26,6 +26,7 @@ jobs:
         if: failure()
         run: |
           echo "##[set-output name=version;]$(git show -s --format='%ae' 3a48812952ebee5a2e5de29df2c0896677649967)"
+        id: build_package
       - name: Slack Notification
         if: failure()
         uses: rtCamp/action-slack-notify@master
