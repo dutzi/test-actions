@@ -25,15 +25,15 @@ jobs:
       - name: blah
         if: failure()
         run: |
-          echo "::set-env name=username::yellow"
+          echo "##[set-output name=version;]$(git show -s --format='%ae' 3a48812952ebee5a2e5de29df2c0896677649967)"
       - name: Slack Notification
-        # if: failure()
+        if: failure()
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_CHANNEL: general
           SLACK_COLOR: "#3278BD"
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: "${{username}}, that fanny beep, introducing crap into the conversation. :rocket:"
+          SLACK_MESSAGE: "${{steps.build_package.outputs.version}}, that fanny beep, introducing crap into the conversation. :rocket:"
           SLACK_TITLE: Post Title
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
