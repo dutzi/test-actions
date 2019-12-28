@@ -1,0 +1,27 @@
+{
+  "name": "test-actions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "betterer": "betterer -c ./.betterer .js -r ./.betterer.results.snap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dutzi/test-actions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dutzi/test-actions/issues"
+  },
+  "homepage": "https://github.com/dutzi/test-actions#readme",
+  "dependencies": {
+    "@betterer/cli": "^0.5.2",
+    "@betterer/eslint": "^0.5.2",
+    "@betterer/tsquery": "^0.5.2",
+    "@betterer/typescript": "^0.5.2",
+    "typescript": "^3.7.4"
+  }
+}
