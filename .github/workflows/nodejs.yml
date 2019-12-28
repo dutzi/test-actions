@@ -22,14 +22,18 @@ jobs:
           npm run betterer
         env:
           CI: true
-      - name: Slack Notification
+      - name: blah
         if: failure()
+        run: |
+          echo "::set-env name=username::yellow"
+      - name: Slack Notification
+        # if: failure()
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_CHANNEL: general
           SLACK_COLOR: "#3278BD"
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: "dutzi, that fanny beep, introducing crap into the conversation. :rocket:"
+          SLACK_MESSAGE: "${{username}}, that fanny beep, introducing crap into the conversation. :rocket:"
           SLACK_TITLE: Post Title
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
