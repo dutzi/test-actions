@@ -25,7 +25,7 @@ jobs:
       - name: Get Committer Name
         if: failure()
         run: |
-          echo "##[set-output name=username;]$(git show -s --format='%ae' ${{GITHUB_SHA}})"
+          echo "##[set-output name=username;]$(git show -s --format='%ae' ${{github.sha}})"
         id: get_committer_name
       - name: Get Fart Name
         if: failure()
